@@ -29,25 +29,32 @@ def convert_pytorch_checkpoint_to_paddle(pytorch_checkpoint_path,
         for huggingface_name, paddle_name in huggingface_to_paddle.items():
             k = k.replace(huggingface_name, paddle_name)
 
-        print(f"Converting: {oldk} => {k}")
+        #print(f"Converting: {oldk} => {k}")
         paddle_state_dict[k] = v.data.numpy()
 
     paddle.save(paddle_state_dict, paddle_dump_path)
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser()
-    parser.add_argument(
-        "--pytorch_checkpoint_path",
-        default="dpr-reader-multiset-base/pytorch_model.bin",
-        type=str,
-        required=True,
-        help="Path to the Pytorch checkpoint path.")
-    parser.add_argument(
-        "--paddle_dump_path",
-        default="dpr-reader-multiset-base/model_state.pdparams",
-        type=str,
-        required=True,
-        help="Path to the output Paddle model.")
-    args = parser.parse_args()
-    convert_pytorch_checkpoint_to_paddle(args.pytorch_checkpoint_path,
-                                         args.paddle_dump_path)
+    # parser = argparse.ArgumentParser()
+    # parser.add_argument(
+    #     "--pytorch_checkpoint_path",
+    #     default="dpr-reader-multiset-base/pytorch_model.bin",
+    #     type=str,
+    #     required=True,
+    #     help="Path to the Pytorch checkpoint path.")
+    # parser.add_argument(
+    #     "--paddle_dump_path",
+    #     default="dpr-reader-multiset-base/model_state.pdparams",
+    #     type=str,
+    #     required=True,
+    #     help="Path to the output Paddle model.")
+    # args = parser.parse_args()
+
+    # convert_pytorch_checkpoint_to_paddle(args.pytorch_checkpoint_path,
+    #                                      args.paddle_dump_path)
+    import os
+    for e in os.listdir("hg"):
+        a = "hg/"+e+"/pytorch_model.bin"
+        b = "pd/"+e+"/model_state.pdparams"
+        print(f"{a}->{b}")
+        convert_pytorch_checkpoint_to_paddle(a,b)
