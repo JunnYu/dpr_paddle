@@ -1,5 +1,5 @@
-# dpr_paddle
-Dense Passage Retrieval for Open-Domain Question Answering论文paddlepaddle2.x复现
+# DPR paddle2.x实现
+[Dense Passage Retrieval for Open-Domain Question Answering](https://arxiv.org/pdf/2004.04906.pdf)论文paddlepaddle2.x复现
 
 验收标准： 
 1. 复现竞品dpr模型（参考论文和竞品实现链接）
@@ -13,9 +13,11 @@ Dense Passage Retrieval for Open-Domain Question Answering论文paddlepaddle2.x�
 3. DPRContextEncoder网络，DPRQuestionEncoder网络和DPRReader网络前向推理输出对齐竞品（上述两种权重）
 
 # requirements
+```bash
 pip install paddlenlp
 pip install torch
 pip install transformers
+```
 
 
 # 一、权重转换
