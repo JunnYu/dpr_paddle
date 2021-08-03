@@ -19,7 +19,6 @@ pip install torch
 pip install transformers
 ```
 
-
 # 一、权重转换
 ## 方法一：本地转换权重
 ### (1)下载huggingface权重
@@ -46,3 +45,6 @@ pip install transformers
     dpr-reader-multiset-base : tensor(5.0176e-06),tensor(1.8369e-06),tensor(1.3828e-05)
     dpr-reader-single-nq-base : tensor(1.9160e-05),tensor(3.0648e-05),tensor(2.8610e-06)
 ```
+
+# 注！
+由于下载hg权重的时候使用了`wget`，如果不是linux系统，请自己手动下载权重！
