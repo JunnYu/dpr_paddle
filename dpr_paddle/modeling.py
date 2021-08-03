@@ -173,6 +173,12 @@ class DPREncoder(DPRPretrainedModel):
         attention_mask: Optional[paddle.Tensor] = None,
         token_type_ids: Optional[paddle.Tensor] = None,
     ):
+        if attention_mask is not None and attention_mask.ndim == 2:
+            attention_mask = paddle.unsqueeze(
+                (1 - attention_mask).astype(self.bert_model.pooler.dense.weight.dtype)
+                * -1e9,
+                axis=[1, 2],
+            )
         outputs = self.bert_model(
             input_ids=input_ids,
             token_type_ids=token_type_ids,
